@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/hermsale/movies-app/issues"
   },
-  "homepage": "https://github.com/hermsale/movies-app#readme"
+  "homepage": "https://github.com/hermsale/movies-app#readme",
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
 }
