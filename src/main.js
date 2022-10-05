@@ -2,15 +2,17 @@
 
 const api = axios.create({
     baseURL: 'https://api.themoviedb.org/3/',
+    headers: {
+        'Accept': 'application/json',
+    },
+    params: {
+        'api_key': API_KEY,
+    }
   });
 
   // solicitud de vista previa de peliculas en tendencia 
 async function getTrendingMoviesPreview(){
-    const res = await api.get( '/trending/movie/week',{
-        params:{
-            api_key: API_KEY
-        }    
-    })
+    const res = await api.get( '/trending/movie/week')
     console.log(res.data.results);
 
     trendingPreviewMovieList = document.querySelector('.trendingPreview-movieList');
@@ -26,7 +28,6 @@ async function getTrendingMoviesPreview(){
         imgMovie.src = 'https://image.tmdb.org/t/p/w300'+movie.poster_path;
         imgMovie.alt = movie.title;
 
-        // div.appendChild(imgMovie);
         divMovieContainer.appendChild(imgMovie);
                 trendingPreviewMovieList.appendChild(divMovieContainer);
     })
@@ -36,33 +37,28 @@ async function getTrendingMoviesPreview(){
 
 getTrendingMoviesPreview();
 
-async function getCategoriessPreview(){
-    const res = await api.get( '/genre/movie/list',{
-        params:{
-            api_key: API_KEY
-        }    
-    })
+// solicitud de categorias  
+async function getCategoriesPreview(){
+    const res = await api.get( '/genre/movie/list')
     console.log(res.data.genres);
 
-    // trendingPreviewMovieList = document.querySelector('.trendingPreview-movieList');
+    categoriesList = document.querySelector('.categoriesPreview-list');
     
-    // res.data.results.map(movie =>{
+
+    res.data.genres.map(genres =>{
+        divCategoryContainer = document.createElement('div');
+        divCategoryContainer.classList.add('category-container');
+
+        h3CategoryTitle = document.createElement('h3');
+        h3CategoryTitle.classList.add('category-title');
+        h3CategoryTitle.innerText = genres.name;
+        h3CategoryTitle.id = 'id'+genres.id;
+
+        divCategoryContainer.appendChild(h3CategoryTitle);
+        categoriesList.appendChild(divCategoryContainer);
         
-    //     divMovieContainer = document.createElement('div');
-    //     divMovieContainer.classList.add('movie-container');
-
-    //     imgMovie = document.createElement('img');
-    //     imgMovie.classList = 'movie-img';
-
-    //     imgMovie.src = 'https://image.tmdb.org/t/p/w300'+movie.poster_path;
-    //     imgMovie.alt = movie.title;
-
-    //     // div.appendChild(imgMovie);
-    //     divMovieContainer.appendChild(imgMovie);
-    //             trendingPreviewMovieList.appendChild(divMovieContainer);
-    // })
-    
+    })
     
 }
 
-getCategoriessPreview();
+getCategoriesPreview();
