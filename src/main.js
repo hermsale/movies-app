@@ -1,5 +1,3 @@
-// const axios = require('axios');
-
 const api = axios.create({
     baseURL: 'https://api.themoviedb.org/3/',
     headers: {
@@ -35,8 +33,6 @@ async function getTrendingMoviesPreview(){
     
 }
 
-getTrendingMoviesPreview();
-
 // solicitud de categorias  
 async function getCategoriesPreview(){
     const res = await api.get( '/genre/movie/list')
@@ -60,5 +56,3 @@ async function getCategoriesPreview(){
     })
     
 }
-
-getCategoriesPreview();
