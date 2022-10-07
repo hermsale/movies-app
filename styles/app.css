@@ -36,7 +36,7 @@
 }
 
 html {
-  background-color: var(--blue-medium-3);
+  background-color: var(--aqua);
 }
 
 body {
@@ -141,6 +141,7 @@ button {
   position: fixed;
   top: 0;
   width: 100%;
+  /* max-width: 375px; */
 }
 
 .header-container--categoryView {
@@ -244,6 +245,7 @@ button {
   width: 8px;
   height: 8px;
 }
+
 #id28 { --idColor: var(--yellow); }
 #id12 { --idColor: var(--red); }
 #id16 { --idColor: var(--green); }
@@ -356,10 +358,12 @@ footer {
   background-color: var(--blue-medium-3);
   color: var(--blue-light-2);
   text-align: center;
-  height: 48px;
+  /* height: 30px; */
+  padding: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;
 }
 
 

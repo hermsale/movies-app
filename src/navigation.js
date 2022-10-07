@@ -1,7 +1,16 @@
+// botones de navegacion 
 searchFormBtn.addEventListener("click", () => { 
     location.hash = '#search='
 });
 
+arrowBtn.addEventListener("click", () => { 
+    location.hash = '#home'
+});
+
+trendingBtn.addEventListener("click", () => { 
+    location.hash = '#trends'
+});
+// escuchamos los cambios en windows 
 window.addEventListener('DOMContentLoaded', navigator,false);
 window.addEventListener('hashchange',navigator,false)
 
@@ -78,6 +87,12 @@ function categoryPage(){
       movieDetailSection.classList.add('inactive');
     //   mostramos la generic section y movie detail 
       genericSection.classList.remove('inactive');
+
+      url = location.hash.split('=');
+    //   genero = url.split('-');
+      console.log(url);
+    //   console.log(genero);
+      getMoviesByCategory();
 }
 
 function searchPage(){
@@ -90,7 +105,7 @@ function searchPage(){
 
       // mostramos la flechita para volver  
       arrowBtn.classList.remove('inactive');
-      arrowBtn.classList.remove('header-arrow--white');
+      arrowBtn.classList.add('header-arrow');
       // mostramos el titulo de la categoria 
       headerCategoryTitle.classList.remove('inactive');
       // ocultamos el titulo 
@@ -114,12 +129,13 @@ function moviePage(){
       // seccion header vista
       // esta vista es solo para movie details 
       headerSection.classList.add('header-container--long');
+      
       // limpiamos la imagen background del movie detail 
     //   headerSection.style.background = '';
 
       // mostramos la flechita para volver  
       arrowBtn.classList.remove('inactive');
-    //   arrowBtn.classlist.add('header-arrow--white');
+      arrowBtn.classList.add('header-arrow--white');
       // mostramos el titulo de la categoria 
       headerCategoryTitle.classList.remove('inactive');
       // ocultamos el titulo 
@@ -155,15 +171,15 @@ function homePage(){
       // mostramos el buscador
       searchForm.classList.remove('inactive');
 
-
+      categoriesPreviewSection.classList.remove('inactive'); 
     // secciones vista
       // mostramos categories y trending preview 
       trendingPreviewSection.classList.remove('inactive'); 
-      categoriesPreviewList.classList.remove('inactive');
     //   ocultamos la generic section y movie detail 
       genericSection.classList.add('inactive');
       movieDetailSection.classList.add('inactive');
 
     getTrendingMoviesPreview();
     getCategoriesPreview();
+   
 }
