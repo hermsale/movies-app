@@ -158,6 +158,7 @@ button {
   margin-bottom: 16px;
   cursor: pointer;
   display: inline-block;
+  position: fixed;
 }
 .header-arrow--white {
   color: var(--blue-light-1);

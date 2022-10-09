@@ -27,6 +27,10 @@ function navigator(){
     }else{
         homePage();
     }
+
+  // realizamos un scrollTop para que las vistas inicien siempre en el mismo lugar 
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 }
 
 function trendsPage(){
@@ -88,11 +92,15 @@ function categoryPage(){
     //   mostramos la generic section y movie detail 
       genericSection.classList.remove('inactive');
 
-      url = location.hash.split('=');
-    //   genero = url.split('-');
-      console.log(url);
-    //   console.log(genero);
-      getMoviesByCategory();
+
+    // generamos el ID para pasar por parametro al main 
+    // con la funcion split separamos el string que se encuentra en .hash, utilizando el '=' de separador  
+    // utilizamos destructuring para guardar por separado cada string
+      [ , genero] = location.hash.split('=');
+      [id, nombreCompleto] = genero.split('/');
+      // filtramos los nombres con varias palabras
+      nombre = nombreCompleto.replace('%20',' ');
+      getMoviesByCategory(id,nombre);
 }
 
 function searchPage(){
