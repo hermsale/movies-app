@@ -1,16 +1,22 @@
 // botones de navegacion 
 searchFormBtn.addEventListener("click", () => { 
-    location.hash = '#search='
+    location.hash = '#search='+searchFormInput.value;
 });
 
 arrowBtn.addEventListener("click", () => { 
-    location.hash = '#home'
+    location.hash = window.history.back();
 });
 
 trendingBtn.addEventListener("click", () => { 
     location.hash = '#trends'
 });
-// escuchamos los cambios en windows 
+
+headerTitle.addEventListener("click", () => {
+  location.hash = '#home'
+});
+
+
+// escuchamos los cambios en window 
 window.addEventListener('DOMContentLoaded', navigator,false);
 window.addEventListener('hashchange',navigator,false)
 
@@ -46,6 +52,7 @@ function trendsPage(){
       arrowBtn.classList.remove('header-arrow--white');
       // mostramos el titulo de la categoria 
       headerCategoryTitle.classList.remove('inactive');
+      headerCategoryTitle.innerText = 'Tendencias';
       // ocultamos el titulo 
       headerTitle.classList.add('inactive');
       // ocultamos el buscador
@@ -61,7 +68,7 @@ function trendsPage(){
     //   ocultamos la lista de categorias 
       categoriesPreviewSection.classList.add('inactive');
 
-    
+      getTrendingMovies();
 }
 
 function categoryPage(){
@@ -114,10 +121,10 @@ function searchPage(){
       // mostramos la flechita para volver  
       arrowBtn.classList.remove('inactive');
       arrowBtn.classList.add('header-arrow');
-      // mostramos el titulo de la categoria 
-      headerCategoryTitle.classList.remove('inactive');
+      // quitamos el titulo de la categoria 
+      headerCategoryTitle.classList.add('inactive');
       // ocultamos el titulo 
-      headerTitle.classList.add('inactive');
+      headerTitle.classList.remove('inactive');
       // ocultamos el buscador
       searchForm.classList.remove('inactive');
       
@@ -130,10 +137,19 @@ function searchPage(){
       trendingPreviewSection.classList.add('inactive'); 
     //   ocultamos la lista de categorias 
       categoriesPreviewSection.classList.add('inactive');
+
+      busqueda = searchFormInput.value;
+
+      // query contiene la pelicula a buscar 
+      [genero,nombre] = location.hash.split('=');
+      // reemplazamos todas las coincidencias por espacios
+      query = nombre.replaceAll('%20',' ');
+      getMoviesBySearch(query);
 }
 
 function moviePage(){
     console.log('vista movie');
+    
       // seccion header vista
       // esta vista es solo para movie details 
       headerSection.classList.add('header-container--long');
@@ -164,7 +180,7 @@ function moviePage(){
 
 function homePage(){
     console.log('vista home'); 
-
+    searchFormInput.value = '';
     // seccion header vista
       // esta vista es solo para movie details 
       headerSection.classList.remove('header-container--long');

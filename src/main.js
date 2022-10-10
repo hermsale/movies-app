@@ -14,6 +14,7 @@ const api = axios.create({
 // generador de peliculas para getMoviesByCategory y getTrendingMoviesPreview
 function viewMovies(movies,container){
     container.innerHTML = '';
+    console.log(movies.results);
     movies.results.map(movie => {
     divMovieContainer = document.createElement('div');
     divMovieContainer.classList.add('movie-container');
@@ -49,7 +50,7 @@ function viewCategories(categorie,container){
 }
 // SOLICITUDES A LA API ////////////////////////////////////////
 
-  // solicitud de vista previa de peliculas en tendencia 
+  // solicitud de vista previa de peliculas en tendencia - visual homepage 
 async function getTrendingMoviesPreview(){
     try {
         const {data} = await api.get( '/trending/movie/week')
@@ -59,18 +60,17 @@ async function getTrendingMoviesPreview(){
     }    
 }
 
-// solicitud de categorias  
-async function getCategoriesPreview(){
+// 
+async function getTrendingMovies(){
     try {
-        // hacemos destructuring para solo obtener <data> del objeto solicitado
-        const {data} = await api.get( '/genre/movie/list')
-        viewCategories(data,categoriesPreviewList)
+        const {data} = await api.get( '/trending/movie/week')
+            viewMovies(data,genericSection);        
     } catch (error) {
-        console.log('Ocurrio un error '+error)
-    }
-    
+        console.log('Ocurrio un error '+error);
+    }    
 }
 
+// solicitud de peliculas por seleccion de categoria 
 async function getMoviesByCategory(id,name){
     try {
         // indicamos al titulo el nombre del genero 
@@ -87,3 +87,31 @@ async function getMoviesByCategory(id,name){
     }    
 }
 
+// solicitud de categorias  ///////////////////////////////////////////////
+async function getCategoriesPreview(){
+    try {
+        // hacemos destructuring para solo obtener <data> del objeto solicitado
+        const {data} = await api.get( '/genre/movie/list')
+        viewCategories(data,categoriesPreviewList)
+    } catch (error) {
+        console.log('Ocurrio un error '+error)
+    }
+    
+}
+
+
+async function getMoviesBySearch(query){
+    try {
+        // indicamos al titulo el nombre del genero 
+        // headerCategoryTitle.innerText = name;
+        // console.log(id)
+        const {data} = await api.get( '/search/movie',{
+            params: {
+                query: query,
+            }
+        })
+        viewMovies(data,genericSection);  
+    } catch (error) {
+        console.log('Ocurrio un error '+error);
+    }    
+}
