@@ -29,7 +29,7 @@ function navigator(){
     }else if (location.hash.startsWith('#search=')) {
         searchPage();
     }else if (location.hash.startsWith('#movie=')) {
-        moviePage();
+        moviePageDetail();
     }else{
         homePage();
     }
@@ -147,7 +147,7 @@ function searchPage(){
       getMoviesBySearch(query);
 }
 
-function moviePage(){
+function moviePageDetail(){
     console.log('vista movie');
     
       // seccion header vista
@@ -161,7 +161,7 @@ function moviePage(){
       arrowBtn.classList.remove('inactive');
       arrowBtn.classList.add('header-arrow--white');
       // mostramos el titulo de la categoria 
-      headerCategoryTitle.classList.remove('inactive');
+      headerCategoryTitle.classList.add('inactive');
       // ocultamos el titulo 
       headerTitle.classList.add('inactive');
       // ocultamos el buscador
@@ -176,6 +176,13 @@ function moviePage(){
       trendingPreviewSection.classList.add('inactive'); 
     //   ocultamos la lista de categorias 
       categoriesPreviewSection.classList.add('inactive');
+
+      // query contiene la pelicula a buscar 
+      [,movie_id] = location.hash.split('=');
+      // reemplazamos todas las coincidencias por espacios
+      // query = nombre.replaceAll('%20',' ');
+      console.log(movie_id)
+      getMovieDetail(movie_id);
 }
 
 function homePage(){

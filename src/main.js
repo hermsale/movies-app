@@ -19,6 +19,12 @@ function viewMovies(movies,container){
     divMovieContainer = document.createElement('div');
     divMovieContainer.classList.add('movie-container');
 
+    // lo utilizamos como boton para ir a la vista movie details
+    divMovieContainer.addEventListener('click', () => { 
+        console.log(movie.title);
+        console.log(movie.id);
+        location.hash = '#movie='+movie.id;
+    });
     imgMovie = document.createElement('img');
     imgMovie.classList = 'movie-img';
 
@@ -60,7 +66,7 @@ async function getTrendingMoviesPreview(){
     }    
 }
 
-// 
+// muestra las peliculas en tendencia en la vista de tendencia 
 async function getTrendingMovies(){
     try {
         const {data} = await api.get( '/trending/movie/week')
@@ -110,7 +116,21 @@ async function getMoviesBySearch(query){
                 query: query,
             }
         })
-        viewMovies(data,genericSection);  
+        // viewMovies(data,genericSection);  
+    } catch (error) {
+        console.log('Ocurrio un error '+error);
+    }    
+}
+
+// solicitud de peliculas por seleccion de categoria 
+async function getMovieDetail(movie_id){
+    try {
+        // indicamos al titulo el nombre del genero 
+        // headerCategoryTitle.innerText = name;
+        // console.log(id)
+        const {data} = await api.get( `/movie/${movie_id}`)
+        console.log(data)
+        // viewMovies(data,genericSection);  
     } catch (error) {
         console.log('Ocurrio un error '+error);
     }    
