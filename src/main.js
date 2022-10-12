@@ -140,14 +140,27 @@ async function getMovieDetail(movie_id){
             rgba(0, 0, 0, 0.35) 19.27%, 
             rgba(0, 0, 0, 0) 29.17%
             ),url(${backgroundImg})`;
-
+                
         movieDetailTitle.innerText = movie.title;
         movieDetailDescription.innerText = movie.overview;
         movieDetailScore.innerText = movie.vote_average;
         // url('https://pics.filmaffinity.com/Deadpool-777527803-large.jpg')
         // console.log(data.poster_path)
-        viewCategories(movie,movieDetailCategoriesList)
+        viewCategories(movie,movieDetailCategoriesList);
+
+        getRelatedMovies(movie_id);
     } catch (error) {
         console.log('Ocurrio un error '+error);
     }    
+}
+
+// vista de peliculas relacionadas, de la vista de movie details
+async function getRelatedMovies(movie_id){
+    try {
+        const {data:movie} = await api.get( `/movie/${movie_id}/recommendations`)
+        console.log(movie)
+        viewMovies(movie,relatedMoviesContainer);  
+    } catch (error) {
+        console.log('Ocurrio un error '+error);
+    }
 }
