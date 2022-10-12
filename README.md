@@ -3,3 +3,4 @@ Aplicación web SPA basado en un sistmea de consulta a una API pública de pelí
 URL API pública: https://www.themoviedb.org/
 
 
+Se empezo trabajando desde la vista mobile. Próximamente se agregara la vista desktop.
