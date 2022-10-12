@@ -23,6 +23,7 @@ function viewMovies(movies,container){
     divMovieContainer.addEventListener('click', () => { 
         console.log(movie.title);
         console.log(movie.id);
+        // agregamos al hash el id de la pelicula 
         location.hash = '#movie='+movie.id;
     });
     imgMovie = document.createElement('img');
@@ -116,7 +117,7 @@ async function getMoviesBySearch(query){
                 query: query,
             }
         })
-        // viewMovies(data,genericSection);  
+        viewMovies(data,genericSection);  
     } catch (error) {
         console.log('Ocurrio un error '+error);
     }    
@@ -128,9 +129,24 @@ async function getMovieDetail(movie_id){
         // indicamos al titulo el nombre del genero 
         // headerCategoryTitle.innerText = name;
         // console.log(id)
-        const {data} = await api.get( `/movie/${movie_id}`)
-        console.log(data)
-        // viewMovies(data,genericSection);  
+        const {data:movie} = await api.get( `/movie/${movie_id}`)
+        console.log(movie)
+
+        // imagen de background
+        const backgroundImg = 'https://image.tmdb.org/t/p/w500'+movie.poster_path;
+        headerSection.style.background = `
+            linear-gradient(
+            180deg, 
+            rgba(0, 0, 0, 0.35) 19.27%, 
+            rgba(0, 0, 0, 0) 29.17%
+            ),url(${backgroundImg})`;
+
+        movieDetailTitle.innerText = movie.title;
+        movieDetailDescription.innerText = movie.overview;
+        movieDetailScore.innerText = movie.vote_average;
+        // url('https://pics.filmaffinity.com/Deadpool-777527803-large.jpg')
+        // console.log(data.poster_path)
+        viewCategories(movie,movieDetailCategoriesList)
     } catch (error) {
         console.log('Ocurrio un error '+error);
     }    

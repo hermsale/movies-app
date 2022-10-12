@@ -26,6 +26,7 @@ function navigator(){
         trendsPage();
     }else if (location.hash.startsWith('#category=')) {
         categoryPage();
+        headerSection.style.background = '';
     }else if (location.hash.startsWith('#search=')) {
         searchPage();
     }else if (location.hash.startsWith('#movie=')) {
@@ -76,16 +77,17 @@ function categoryPage(){
 
     // seccion header vista
       // esta vista es solo para movie details 
-      headerSection.classList.add('.inactive');
-      // limpiamos la imagen background del movie detail 
-      headerSection.style.background = '';
-
+      headerSection.classList.remove('header-container--long');
+          
+      // .header-container--long
       // mostramos la flechita para volver  
       arrowBtn.classList.remove('inactive');
+      arrowBtn.classList.remove('header-arrow--white');
+  
       // mostramos el titulo de la categoria 
       headerCategoryTitle.classList.remove('inactive');
       // ocultamos el titulo 
-      headerTitle.classList.add('inactive');
+      headerTitle.classList.remove('inactive');
       // ocultamos el buscador
       searchForm.classList.add('inactive');
 
@@ -149,13 +151,13 @@ function searchPage(){
 
 function moviePageDetail(){
     console.log('vista movie');
-    
+      headerSection.classList.remove('inactive');
       // seccion header vista
       // esta vista es solo para movie details 
       headerSection.classList.add('header-container--long');
       
       // limpiamos la imagen background del movie detail 
-    //   headerSection.style.background = '';
+      headerSection.style.background = '';
 
       // mostramos la flechita para volver  
       arrowBtn.classList.remove('inactive');
