@@ -141,6 +141,7 @@ button {
   position: fixed;
   top: 0;
   width: 100%;
+  
 }
 
 .header-container--categoryView {
@@ -358,7 +359,7 @@ footer {
   background-color: var(--blue-medium-3);
   color: var(--blue-light-2);
   text-align: center;
-  height: 30px;
+  /* height: 30px; */
   padding: 5px;
   display: flex;
   justify-content: center;

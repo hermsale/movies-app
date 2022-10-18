@@ -36,7 +36,8 @@
 }
 
 html {
-  background-color: var(--aqua);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 19.27%, rgba(0, 0, 0, 0) 29.17%), url('https://pics.filmaffinity.com/');
+  background-color: var(--blue-light-1);
 }
 
 body {
@@ -140,7 +141,8 @@ button {
   height: 480px;
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 50%;
+  margin: 0% 25%;
 }
 
 .header-container--categoryView {
@@ -288,12 +290,14 @@ button {
 
 /* Movie Detail */
 .movieDetail-container {
+  width: 100%;
+  border: 0.1rem solid black;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   padding: 32px 24px;
   margin-top: 403px;
   z-index: 1;
-  position: absolute;
+  position: relative;
   background-color: var(--blue-light-1);
 }
 
@@ -321,6 +325,8 @@ button {
 }
 
 .relatedMovies-container {
+  /* display: flex;
+  flex-direction: column; */
   margin-top: 24px;
   height: 216px;
 }
