@@ -278,12 +278,12 @@ button {
 
 .genericList-container .movie-container {
   display: inline-block;
-  width: 47.5%;
+  width: 32%;
 }
 
 .genericList-container .movie-img {
   width: 100%;
-}
+} 
 
 
 /* Movie Detail */
@@ -358,7 +358,7 @@ footer {
   background-color: var(--blue-medium-3);
   color: var(--blue-light-2);
   text-align: center;
-  height: 30px;
+  /* height: 30px; */
   padding: 5px;
   display: flex;
   justify-content: center;

@@ -105,3 +105,6 @@ dist
 
 # API KAY 
 # src/api_key.js
+
+#TempCodeRunner
+src/TempCodeRunnerFile.js
