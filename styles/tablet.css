@@ -371,3 +371,27 @@ footer {
 .inactive {
   display: none;
 }
+
+
+.movie-container__loading{
+  border-radius: 8px;
+  width: 150px; 
+  height: 225px; 
+  background-color: var(--blue-dark-1);
+  animation:  skelenton;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes skelenton{
+  0%{
+    background-color: var(--blue-dark-1);
+  }
+  50%{
+    background-color: var(--blue-dark-2);
+
+  }
+  100%{
+    background-color: var(--blue-dark-1);
+  }
+}

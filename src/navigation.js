@@ -41,6 +41,7 @@ function navigator(){
 }
 
 function trendsPage(){
+
     console.log('vista trends');
     // seccion header vista
       // esta vista es solo para movie details 

@@ -19,13 +19,13 @@
     <h1 class="header-title">Movies Nuke</h1>
     <h1 class="header-title header-title--categoryView inactive">Género</h1>
 
-    <form id="searchForm" class="header-searchForm">
+    <form id="searchForm" class="header-searchForm ">
       <input type="text" placeholder="Buscar"/>
       <button id="searchBtn">🔍</button>
     </form>
   </header>
 
-  <section id="trendingPreview" class="trendingPreview-container">
+  <section id="trendingPreview" class="trendingPreview-container ">
     <div class="trendingPreview-header">
       <h2 class="trendingPreview-title">Tendencias</h2>
       <button class="trendingPreview-btn">Ver más</button>
@@ -34,7 +34,16 @@
     <!-- ///// lista Tendencias para la lista de las movies  ///////////// -->
 
     <article class="trendingPreview-movieList">
-      
+
+      <div class="movie-container movie-container__loading">
+
+      </div>
+      <div class="movie-container movie-container__loading">
+
+      </div>
+      <div class="movie-container movie-container__loading">
+
+      </div>
       <!-- Ejemplo de movie container - trending preview -->
       <!-- <div class="movie-container">
         <img
@@ -53,7 +62,7 @@
 
     <article class="categoriesPreview-list">
       <!-- <div class="category-container">
-        <h3 id="id28" class="category-title">Romance</h3>
+        <h3 id="id28" class="category-title">Romance</h3> 
       </div> -->
     </article>
   </section>
