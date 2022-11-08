@@ -379,10 +379,46 @@ footer {
 }
 
 
+/* animacion de carga  home */
 .movie-container__loading{
   border-radius: 8px;
   width: 150px; 
   height: 225px; 
+  background-color: var(--blue-dark-1);
+  animation:  skelenton;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+/* animacion movie */
+.relatedMovies__loading{
+  
+  border-radius: 8px;
+  width: 125px; 
+  height: 187px; 
+  background-color: var(--blue-dark-1);
+  animation:  skelenton;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+/* animacion category */
+
+.movie-img__loading{
+  border-radius: 8px;
+  width: 312px; 
+  height: 470px; 
+  background-color: var(--blue-dark-1);
+  animation:  skelenton;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+/* home */
+.category-title__loading{
+  border-radius: 8px;
+  width: 100px; 
+  height: 21px; 
   background-color: var(--blue-dark-1);
   animation:  skelenton;
   animation-duration: 3s;

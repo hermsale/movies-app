@@ -71,10 +71,10 @@ async function getTrendingMoviesPreview(){
 async function getTrendingMovies(){
     try {
         const {data} = await api.get( '/trending/movie/week')
-            viewMovies(data,genericSection);        
+            viewMovies(data,genericSection);
     } catch (error) {
         console.log('Ocurrio un error '+error);
-    }    
+    }
 }
 
 // solicitud de peliculas por seleccion de categoria 
